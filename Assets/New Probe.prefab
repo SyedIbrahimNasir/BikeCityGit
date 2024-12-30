@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9046034976511304088}
   - component: {fileID: 3141585068448104955}
   m_Layer: 0
-  m_Name: Old Probe
+  m_Name: New Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
