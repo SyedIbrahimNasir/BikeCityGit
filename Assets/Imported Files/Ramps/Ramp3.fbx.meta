@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 63265ce3cb61c8b428404d814a62b6cd
+guid: 0edb6b4df38c5e445a6578eda7a1a2b9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Grill
-    second: {fileID: 2100000, guid: 534b8740436f98c44a850904ff8f6516, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 2d585bafb7e72e949b29e9c856807e1f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Road
-    second: {fileID: 2100000, guid: fe90947915910fc4493c972f0d885652, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
