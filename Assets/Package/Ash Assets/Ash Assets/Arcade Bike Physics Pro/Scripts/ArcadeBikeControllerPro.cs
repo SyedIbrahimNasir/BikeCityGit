@@ -241,6 +241,9 @@ namespace ArcadeBP_Pro
 
             [Tooltip("Speed of aligning the rotator when the bike is in the air. How fast bike align with the world up axis.")]
             public float alignRotatorSpeed_Air = 5f;
+
+            public LayerMask RoadLayer;
+
         }
         public BikeSettings bikeSettings;
 
@@ -406,9 +409,9 @@ namespace ArcadeBP_Pro
 
         private void Update()
         {
-            PlaceWheelOnGround(bikeReferences.FrontWheelParent, bikeReferences.FrontWheel, bikeGeometry.FrontWheelRadius, bikeGeometry.FrontWheelAngle,
+            PlaceWheelOnGround(bikeReferences.FrontWheelParent, bikeReferences.FrontWheel,bikeSettings.RoadLayer, bikeGeometry.FrontWheelRadius, bikeGeometry.FrontWheelAngle,
                                maxFrontRaycastDistance, out frontWheelHit, out frontWheelIsGrounded, out groundNormal_front);
-            PlaceWheelOnGround(bikeReferences.RearWheelParent, bikeReferences.RearWheel, bikeGeometry.RearWheelRadius, bikeGeometry.RearWheelAngle,
+            PlaceWheelOnGround(bikeReferences.RearWheelParent, bikeReferences.RearWheel,bikeSettings.RoadLayer, bikeGeometry.RearWheelRadius, bikeGeometry.RearWheelAngle,
                                maxRearRaycastDistance, out rearWheelHit, out rearWheelIsGrounded, out groundNormal_rear);
 
             // call calculate surface params only after placewheelonground is called.
@@ -509,15 +512,16 @@ namespace ArcadeBP_Pro
         #endregion
 
 
+
         #region Wheels Placement
 
-        private void PlaceWheelOnGround(Transform wheelParent, Transform wheel, float radius, float wheelAngle, float maxRaycastDistance,
+        private void PlaceWheelOnGround(Transform wheelParent, Transform wheel,LayerMask RoadLayer, float radius, float wheelAngle, float maxRaycastDistance,
                                         out RaycastHit hit, out bool isGrounded, out Vector3 groundNormal)
         {
             Vector3 raycastPosition = wheelParent.position + wheelParent.up * radius;
             Vector3 raycastDirection = -wheelParent.up;
 
-            if (Physics.Raycast(raycastPosition, raycastDirection, out hit, maxRaycastDistance))
+            if (Physics.Raycast(raycastPosition, raycastDirection, out hit, maxRaycastDistance, RoadLayer))
             {
                 float h = radius * (1 / Mathf.Cos(wheelAngle * Mathf.Deg2Rad));
                 float localOffset = hit.distance - h - radius;
