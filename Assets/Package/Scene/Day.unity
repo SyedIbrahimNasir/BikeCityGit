@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 98dff4929b05826448330346bcc251ef
+  m_OcclusionCullingData: {fileID: 36300000, guid: 33371892ef081d84f927caf0af10af9b,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -96,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 1281d3e4956b8bf4c88a9f741e1351cf,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: c2da75fc631fe5d4b81c55f80bf23ad2,
     type: 2}
 --- !u!196 &4
