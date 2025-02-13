@@ -59,7 +59,7 @@ namespace ArcadeBP_Pro
         [Serializable]
         public class BikeReferences
         {
-            [Tooltip("The main transform used for aligning the bike’s rotation with the ground.")]
+            [Tooltip("The main transform used for aligning the bikeï¿½s rotation with the ground.")]
             public Transform Rotator;
 
             [Tooltip("The transform used for controlling the wheelie animation.")]
@@ -86,13 +86,13 @@ namespace ArcadeBP_Pro
             [Tooltip("The parent transform for the bike steering.")]
             public Transform BikeSteeringParent;
 
-            [Tooltip("Meshes associated with the bike’s steering.")]
+            [Tooltip("Meshes associated with the bikeï¿½s steering.")]
             public Transform SteeringMeshes;
 
             [Tooltip("The main model of the bike.")]
             public Transform BikeModel;
 
-            [Tooltip("The mesh representing the bike’s body.")]
+            [Tooltip("The mesh representing the bikeï¿½s body.")]
             public Transform BodyMesh;
 
             [Tooltip("The Rigidbody component attached to the bike.")]
@@ -134,10 +134,10 @@ namespace ArcadeBP_Pro
             [Tooltip("Width of the rear wheel.")]
             public float RearWheelWidth = 0.5f;
 
-            [Tooltip("Angle of the front wheel relative to the bike’s body. Affects the bike’s suspension and wheel placement calculations.")]
+            [Tooltip("Angle of the front wheel relative to the bikeï¿½s body. Affects the bikeï¿½s suspension and wheel placement calculations.")]
             public float FrontWheelAngle = 15f;
 
-            [Tooltip("Angle of the rear wheel relative to the bike’s body. Similar to the front wheel angle but for the rear wheel.")]
+            [Tooltip("Angle of the rear wheel relative to the bikeï¿½s body. Similar to the front wheel angle but for the rear wheel.")]
             public float RearWheelAngle = 0f;
         }
         public BikeGeometry bikeGeometry;
@@ -146,7 +146,7 @@ namespace ArcadeBP_Pro
         [Serializable]
         public class BikeSuspension
         {
-            [Tooltip("The force exerted by the bike’s suspension springs. Higher values result in a stiffer suspension.")]
+            [Tooltip("The force exerted by the bikeï¿½s suspension springs. Higher values result in a stiffer suspension.")]
             public float SpringForce = 100;
 
             [Tooltip("The force exerted by the dampers to absorb shocks. Higher values result in less oscillation.")]
@@ -471,7 +471,7 @@ namespace ArcadeBP_Pro
 
         private void FixedUpdate()
         {
-            localBikeVelocity = bikeReferences.Rotator.InverseTransformDirection(bikeReferences.BikeRb.velocity);
+            localBikeVelocity = bikeReferences.Rotator.InverseTransformDirection(bikeReferences.BikeRb.linearVelocity);
 
             AddGravity();
 
@@ -674,7 +674,7 @@ namespace ArcadeBP_Pro
             Vector3 springDir = suspensionNormal.normalized;
             Debug.DrawRay(transform.position, springDir, Color.green);
 
-            float springVel = Vector3.Dot(bikeReferences.BikeRb.velocity, springDir);
+            float springVel = Vector3.Dot(bikeReferences.BikeRb.linearVelocity, springDir);
             float springForce = bikeSuspension.SpringForce * (compression_Total - bikeSuspension.groundStickFactor * compression_Total);
             float damperForce = bikeSuspension.DamperForce * springVel;
 
@@ -934,7 +934,7 @@ namespace ArcadeBP_Pro
                     float speed = rotationAmount * distance;
 
                     Vector3 speedDirection = -rotationDirection * bikeReferences.Rotator.right;
-                    bikeReferences.BikeRb.velocity = speedDirection * speed * burnoutLerp;
+                    bikeReferences.BikeRb.linearVelocity = speedDirection * speed * burnoutLerp;
 
                     // Rotate the rotator
                     //bikeReferences.Rotator.Rotate(Vector3.up, rotationAmount * rotationDirection * burnoutLerp, Space.World);
@@ -1282,8 +1282,8 @@ namespace ArcadeBP_Pro
 
         public void reduceSurfaceNormalDownVelocity(float factor)
         {
-            Vector3 currentVelocityInSurfaceNormal = Vector3.Project(bikeReferences.BikeRb.velocity, projectedBikeUp);
-            bikeReferences.BikeRb.velocity -= currentVelocityInSurfaceNormal * factor;
+            Vector3 currentVelocityInSurfaceNormal = Vector3.Project(bikeReferences.BikeRb.linearVelocity, projectedBikeUp);
+            bikeReferences.BikeRb.linearVelocity -= currentVelocityInSurfaceNormal * factor;
         }
 
 

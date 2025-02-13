@@ -67,7 +67,7 @@ namespace ArcadeBP_Pro
             ArcadeBikeControllerPro currentBike = bikeSwitcher.GetCurrentBike();
             if (currentBike != null)
             {
-                currentBike.bikeReferences.BikeRb.velocity = Vector3.zero;
+                currentBike.bikeReferences.BikeRb.linearVelocity = Vector3.zero;
                 currentBike.bikeReferences.BikeRb.angularVelocity = Vector3.zero;
                 currentBike.bikeReferences.Rotator.transform.localRotation = Quaternion.identity;
                 currentBike.transform.localPosition = Vector3.zero;

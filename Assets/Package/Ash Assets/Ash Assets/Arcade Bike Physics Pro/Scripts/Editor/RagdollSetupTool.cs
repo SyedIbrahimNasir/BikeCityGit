@@ -232,8 +232,8 @@ namespace ArcadeBP_Pro
         private void CopyComponentValues(Rigidbody sourceRb, Rigidbody targetRb)
         {
             targetRb.mass = sourceRb.mass;
-            targetRb.drag = sourceRb.drag;
-            targetRb.angularDrag = sourceRb.angularDrag;
+            targetRb.linearDamping = sourceRb.linearDamping;
+            targetRb.angularDamping = sourceRb.angularDamping;
             targetRb.useGravity = sourceRb.useGravity;
             targetRb.isKinematic = sourceRb.isKinematic;
             targetRb.interpolation = sourceRb.interpolation;

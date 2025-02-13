@@ -118,18 +118,18 @@ namespace ArcadeBP_Pro
             Rigidbody[] bikeRagdollRigidbodies = bikeRagdollInstance.GetComponentsInChildren<Rigidbody>();
             Rigidbody[] characterRagdollRigidbodies = characterRagdollInstance.GetComponentsInChildren<Rigidbody>();
 
-            Vector3 bikeVelocity = bikeRigidbody.velocity;
+            Vector3 bikeVelocity = bikeRigidbody.linearVelocity;
             Vector3 bikeAngularVelocity = bikeRigidbody.angularVelocity;
 
             foreach (Rigidbody rb in bikeRagdollRigidbodies)
             {
-                rb.velocity = bikeVelocity;
+                rb.linearVelocity = bikeVelocity;
                 rb.angularVelocity = bikeAngularVelocity;
             }
 
             foreach (Rigidbody rb in characterRagdollRigidbodies)
             {
-                rb.velocity = bikeVelocity;
+                rb.linearVelocity = bikeVelocity;
                 rb.angularVelocity = bikeAngularVelocity;
             }
 
@@ -153,7 +153,7 @@ namespace ArcadeBP_Pro
             bikeController.canAccelerate = true;
             bikeController.bikeAudio.engineSound.pitch = bikeController.bikeAudio.minPitch;
             bikeController.bikeReferences.LeanTransform.localRotation = Quaternion.identity;
-            bikeRigidbody.velocity = Vector3.zero;
+            bikeRigidbody.linearVelocity = Vector3.zero;
             bikeRigidbody.angularVelocity = Vector3.zero;
 
             isRagdollActivated = false;

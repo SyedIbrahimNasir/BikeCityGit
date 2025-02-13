@@ -47,8 +47,8 @@ namespace ArcadeBP_Pro
             var rb = dummybike.gameObject.AddComponent<Rigidbody>();
 
             rb.mass = bikeController.bikeReferences.BikeRb.mass;
-            rb.drag = 0.5f;
-            rb.angularDrag = 0.5f;
+            rb.linearDamping = 0.5f;
+            rb.angularDamping = 0.5f;
             rb.interpolation = RigidbodyInterpolation.Interpolate;
 
             Transform frontWheel = dummybike.Find("Bike Steering Parent").Find("Bike Steering").Find("Front Wheel Parent").Find("Front Wheel");
